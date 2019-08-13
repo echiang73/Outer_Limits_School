@@ -6,8 +6,7 @@ class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-            // username: '',
-            email: '',
+            username: '',
             password: '',
             redirectTo: null
         }
@@ -39,8 +38,8 @@ class LoginForm extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        // username: response.data.username
-                        email: response.data.email
+                        username: response.data.username,
+                        firstName: response.data.firstName // added
                     })
                     // update the state to redirect to home
                     this.setState({
@@ -64,7 +63,7 @@ class LoginForm extends Component {
                     <form className="form-horizontal">
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="email">Email</label>
+                                <label className="form-label" htmlFor="email">Email Address</label>
                             </div>
                             <div className="col-3 col-mr-auto">
                                 <input className="form-input"

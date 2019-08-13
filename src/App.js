@@ -12,8 +12,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      // username: null
-      firstName: null
+      username: null,
+      firstName: "hello?" // added
     }
 
     this.getUser = this.getUser.bind(this)
@@ -25,7 +25,7 @@ class App extends Component {
     this.getUser()
   }
 
-  updateUser(userObject) {
+  updateUser (userObject) {
     this.setState(userObject)
   }
 
@@ -35,18 +35,18 @@ class App extends Component {
       console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
-
+        console.log(response.data)
+        console.log(response.data.user)
         this.setState({
           loggedIn: true,
-          // username: response.data.user.username
-          firstName: response.data.user.firstName
+          username: response.data.user.username,
+          firstName: response.data.user.firstName // added
         })
       } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
-          // username: null
-          firstName: null
+          username: null
         })
       }
     })
@@ -55,7 +55,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+   
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
         {this.state.loggedIn &&
@@ -76,7 +76,7 @@ class App extends Component {
         <Route
           path="/signup"
           render={() =>
-            <Signup />}
+            <Signup/>}
         />
 
       </div>

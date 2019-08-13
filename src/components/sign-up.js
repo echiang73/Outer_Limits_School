@@ -5,10 +5,7 @@ class Signup extends Component {
 	constructor() {
 		super()
 		this.state = {
-			firstName: '',
-			lastName: '',
 			username: '',
-			email: '',
 			password: '',
 			confirmPassword: '',
 
@@ -26,14 +23,9 @@ class Signup extends Component {
 		console.log(this.state.username)
 		event.preventDefault()
 
-		// this.state.password === this.state.confirmPassword ? 
-		// (
 		//request to server to add a new username/password
 		axios.post('/user/', {
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			username: (this.state.firstName + this.state.lastName).toLowerCase(),
-			email: this.state.email,
+			username: this.state.username,
 			password: this.state.password
 		})
 			.then(response => {
@@ -51,9 +43,6 @@ class Signup extends Component {
 				console.log(error)
 
 			})
-		// ) : (
-		// 	console.log("password doesn't match")
-		// );
 	}
 
 
@@ -63,51 +52,6 @@ render() {
 			<h4>Sign up</h4>
 			<form className="form-horizontal">
 				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="firstName">First Name</label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							type="text"
-							id="firstName"
-							name="firstName"
-							placeholder="First Name"
-							value={this.state.firstName}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="lastName">Last Name</label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							type="text"
-							id="lastName"
-							name="lastName"
-							placeholder="Last Name"
-							value={this.state.lastName}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="email">Email</label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							type="email"
-							id="email"
-							name="email"
-							placeholder="Email Address"
-							value={this.state.email}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				{/* <div className="form-group">
 					<div className="col-1 col-ml-auto">
 						<label className="form-label" htmlFor="username">Username</label>
 					</div>
@@ -121,31 +65,17 @@ render() {
 							onChange={this.handleChange}
 						/>
 					</div>
-				</div> */}
+				</div>
 				<div className="form-group">
 					<div className="col-1 col-ml-auto">
 						<label className="form-label" htmlFor="password">Password: </label>
 					</div>
 					<div className="col-3 col-mr-auto">
 						<input className="form-input"
-							placeholder="Password"
+							placeholder="password"
 							type="password"
 							name="password"
 							value={this.state.password}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="password">Confirm Password: </label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							placeholder="Password"
-							type="password"
-							name="confirmPassword"
-							value={this.state.confirmPassword}
 							onChange={this.handleChange}
 						/>
 					</div>
