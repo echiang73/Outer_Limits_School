@@ -23,7 +23,7 @@ class LoginForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log('handleSubmit')
+        // console.log('handleSubmit')
 
         axios
             .post('/user/login', {
@@ -38,7 +38,7 @@ class LoginForm extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.username,
+                        // username: response.data.username,
                         firstName: response.data.firstName // added
                     })
                     // update the state to redirect to home
